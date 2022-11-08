@@ -1,13 +1,17 @@
 #jinja2: trim_blocks: True, lstrip_blocks: True
 auth_enabled: {{ loki_auth_enabled | bool | lower }}
 
+{% if loki_server is defined %}
 server:
   http_listen_port: {{ loki_server_http_listen_port }}
   http_listen_address: {{ loki_server_http_listen_address }}
   grpc_listen_port: {{ loki_server_grpc_listen_port }}
+{% endif %}
 
+{% if loki_common is defined %}
 common:
   {{ loki_common | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endif %}
 
 {% if loki_memberlist is defined %}
 memberlist:
@@ -22,9 +26,11 @@ compactor:
   {{ loki_compactor | to_nice_yaml(indent=2) | indent(2, False) }}
 {% endif %}
 
+{% if loki_schema_config is defined %}
 schema_config:
   configs:
   {{ loki_schema_config | to_nice_yaml(indent=2) | indent(2, False) }}
+{% endif %}
 
 #storage_config:
 #  {{ loki_storage_config | to_nice_yaml(indent=2) | indent(2, False) }}
