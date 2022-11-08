@@ -4,7 +4,7 @@ auth_enabled: {{ loki_auth_enabled | bool | lower }}
 server:
   http_listen_port: {{ loki_server_http_listen_port }}
   http_listen_address: {{ loki_server_http_listen_address }}
-  grpc_listen_address: {{ loki_server_grpc_listen_address }}
+  grpc_listen_port: {{ loki_server_grpc_listen_port }}
 
 common:
   {{ loki_common | to_nice_yaml(indent=2) | indent(2, False) }}
