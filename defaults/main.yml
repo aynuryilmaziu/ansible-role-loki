@@ -6,7 +6,8 @@ loki_arguments: []
 loki_server_http_listen_port: 3100
 loki_server_grpc_listen_port: 9096
 loki_server_http_listen_address: localhost
-loki_directories: []
+loki_directories: 
+  - /data/loki
 loki_alerts_directory: /data/loki/rules
 loki_schema_config:
   - from: 2020-10-24
