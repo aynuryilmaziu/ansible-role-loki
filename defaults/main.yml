@@ -10,13 +10,14 @@ loki_directories:
   - /data/loki
 loki_alerts_directory: /data/loki/rules
 loki_schema_config:
-  - from: 2020-10-24
-    store: boltdb-shipper
-    object_store: filesystem
-    schema: v11
-    index:
-      prefix: index_
-      period: 24h
+  configs:
+    - from: 2020-10-24
+      store: boltdb-shipper
+      object_store: filesystem
+      schema: v11
+      index:
+        prefix: index_
+        period: 24h
     
 loki_common:
   path_prefix: /data/loki
